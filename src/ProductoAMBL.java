@@ -47,7 +47,12 @@ public class ProductoAMBL {
 			while (continuar()) {
 				System.out.println();
 				System.out.print("Ingrese un codigo: ");
-				 codigo = Integer.parseInt(entrada.nextLine());
+				codigo = Integer.parseInt(entrada.nextLine());
+				while (codigo <= 0 || codigo > 100) {
+					System.out.println("El codigo debe ser mayor que cero y menor que cien.");
+					System.out.print("Ingrese un codigo: ");
+					codigo = Integer.parseInt(entrada.nextLine());
+				} 
 				// Controla alta existente.
 				if (!validarCodPropiedad(codigo)) {
 					
@@ -63,8 +68,7 @@ public class ProductoAMBL {
 					System.out.print("Ingrese el tipo: ");
 					tipo = Integer.parseInt(entrada.nextLine());
 					
-					
-					
+									
 					// seteo de datos
 					miProducto.setCodigo(codigo);
 					miProducto.setDenominacion(denominacion);
@@ -111,12 +115,14 @@ public class ProductoAMBL {
 	}
 	
 	// Metodo para actualizar el precio del alquiler
-	public void actualizarPrecioAlquiler(int codigo, float precio) {
+	public void actualizarProductos(int codigo, int cantidad, float precio) {
 		try {
 			abrirArchivo();
 			flujoProducto.seek(miProducto.posicionar(codigo));
 			miProducto.leer(flujoProducto);
 			if (miProducto.isEstado()) {
+				// Actualizar cantidad existente
+				miProducto.setCantidadEx(miProducto.getCantidadEx() + cantidad);				
 				// Actualizar precio de alquiler
 				miProducto.setPrecioVenta(precio);
 				
@@ -124,8 +130,27 @@ public class ProductoAMBL {
 				miProducto.grabar(flujoProducto);
 				cerrarArchivo();
 			} else {
+				// Si el producto no existe, dar el alta
 				System.out.println();
-				System.out.println("Inexistente!");
+				System.out.println("Producto Inexistente!");
+				System.out.println();
+				System.out.print("Ingrese la denominacion: ");
+				String denominacion = entrada.nextLine();
+				System.out.print("Ingrese el tipo 1 o 2: ");
+				int tipo = Integer.parseInt(entrada.nextLine());
+				
+				// seteo de datos
+				miProducto.setCodigo(codigo);
+				miProducto.setDenominacion(denominacion);
+				miProducto.setCantidadEx(cantidad);
+				miProducto.setPrecioVenta(precio);					
+				miProducto.setTipo(tipo);
+				miProducto.setEstado(true);
+				
+				// grabar registro
+				abrirArchivo();
+				miProducto.grabar(flujoProducto);
+				cerrarArchivo();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

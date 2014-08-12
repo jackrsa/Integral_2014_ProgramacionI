@@ -5,7 +5,7 @@ public class ArbolApp {
 	
 	Arbol miArbol = new Arbol();
 	
-	ProductoAMBL miPropiedadesAMBL = new ProductoAMBL();
+	ProductoAMBL miProductoAMBL = new ProductoAMBL();
 	// NovedadesABML miNovedadesABML = new NovedadesABML();
 	
 	Scanner entrada = new Scanner(System.in);
@@ -20,7 +20,7 @@ public class ArbolApp {
 	public void recorrerArbolParaActualizarPrecio(NodoArbol p) {
 		if (p != null) {
 			recorrerArbolParaActualizarPrecio(p.getPi());
-			// miPropiedadesAMBL.actualizarPrecioAlquiler(p.getCodigoPropiedad(), p.getMonto());
+			miProductoAMBL.actualizarProductos(p.getCodigo(), p.getCantidad(), p.getPrecio());
 			recorrerArbolParaActualizarPrecio(p.getPd());
 		}
 	}
@@ -31,6 +31,11 @@ public class ArbolApp {
 			
 			System.out.print("Ingrese un codigo: ");
 			int codigo = Integer.parseInt(entrada.nextLine());
+			while (codigo <= 0 || codigo > 100) {
+				System.out.println("El codigo debe ser mayor que cero y menor que cien.");
+				System.out.print("Ingrese un codigo: ");
+				codigo = Integer.parseInt(entrada.nextLine());
+			} 
 			
 			System.out.print("Ingrese la cantidad: ");
 			int cantidad = Integer.parseInt(entrada.nextLine());

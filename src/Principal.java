@@ -31,6 +31,7 @@ public class Principal {
 				break;
 			}
 		}while(op!=0);
+		entrada.close();
 	}
 
 }
