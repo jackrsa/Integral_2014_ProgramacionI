@@ -65,7 +65,7 @@ public class ProductoAMBL {
 					System.out.print("Ingrese el precio de venta: ");
 					precioVenta = Float.parseFloat(entrada.nextLine());
 					
-					System.out.print("Ingrese el tipo: ");
+					System.out.print("Ingrese el tipo 1(Hardware) / 2(Software): ");
 					tipo = Integer.parseInt(entrada.nextLine());
 					
 									
@@ -94,7 +94,7 @@ public class ProductoAMBL {
 	public void listado() {
 		System.out.println("\t ***************LISTADO DE PRODUCTOS***************");
 		System.out.println("\t ----------------------------------------------------");
-		System.out.println("\t codigo \t deno \t cantEx \t precio \t tipo");
+		System.out.println("\t codigo \t deno                  \t cantEx \t precio \t tipo");
 		System.out.println();
 		try {
 			abrirArchivo();
@@ -129,6 +129,9 @@ public class ProductoAMBL {
 				// grabar registro modificado
 				miProducto.grabar(flujoProducto);
 				cerrarArchivo();
+				
+				System.out.println();
+				System.out.println("Producto con codigo " + codigo + " actualizado!");
 			} else {
 				// Si el producto no existe, dar el alta
 				System.out.println();
@@ -136,7 +139,7 @@ public class ProductoAMBL {
 				System.out.println();
 				System.out.print("Ingrese la denominacion: ");
 				String denominacion = entrada.nextLine();
-				System.out.print("Ingrese el tipo 1 o 2: ");
+				System.out.print("Ingrese el tipo 1(Hardware) / 2(Software): ");
 				int tipo = Integer.parseInt(entrada.nextLine());
 				
 				// seteo de datos

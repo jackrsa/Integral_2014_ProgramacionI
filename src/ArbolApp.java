@@ -127,13 +127,13 @@ public class ArbolApp {
 		int op = -1;
 		do {
 	
-			System.out.println("  Actualizacion de Alquiler");
+			System.out.println("\n\n  Actualizacion de Alquiler");
 			System.out.println("  =================");
 			System.out.println("1- Generar Arbol");
 			System.out.println("2- Actualizar monto  de alquiler");
 			System.out.println("3- Imprimir Arbol");
-			System.out.println("4- Generar archivo Novedades");
-			System.out.println("5- Listado archivo Novedades");
+			// System.out.println("4- Generar archivo Novedades");
+			// System.out.println("5- Listado archivo Novedades");
 			System.out.println("0 - Salir");
 			System.out.println();
 			System.out.print("Ingrese su opcion: ");
