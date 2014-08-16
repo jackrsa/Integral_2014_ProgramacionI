@@ -10,6 +10,7 @@ public class ProductoAMBL {
 	File archProducto = new File("producto.dat");
 	RandomAccessFile flujoProducto = null;
 	
+	
 	Scanner entrada = new Scanner(System.in);
 	
 	
