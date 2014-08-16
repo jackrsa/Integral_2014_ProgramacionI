@@ -14,6 +14,7 @@ public class ProductoAMBL {
 	Scanner entrada = new Scanner(System.in);
 	
 	
+	
 	// Metodo abrir archivos, si el archivo no existe lo genera vacio.
 	public void abrirArchivo() {
 		try {
